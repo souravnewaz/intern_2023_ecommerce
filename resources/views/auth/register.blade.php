@@ -12,13 +12,13 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">First name</label>
-                <input type="email" class="form-control" name="first_name" required>
+                <input type="text" class="form-control" name="first_name" required>
             </div>
         </div>
         <div class="col-6">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Last name</label>
-                <input type="email" class="form-control" name="last_name" required>
+                <input type="text" class="form-control" name="last_name" required>
             </div>
         </div>
     </div>

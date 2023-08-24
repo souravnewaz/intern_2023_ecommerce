@@ -16,7 +16,7 @@
 @include('layouts.navbar')
 
 <main>
-    <div class="py-5">
+    <div class="py-3">
         <div class="container">
             @include('flash-msg')
             @yield('content')
