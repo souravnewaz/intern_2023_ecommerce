@@ -25,14 +25,18 @@
                         </div>
                         <div class="mx-2">
                             <p class="m-0">{{ $product->name }} <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-dark btn-sm">edit</a></p>
+                            <span class="badge rounded-pill bg-secondary">{{ $product->category->name }}</span>
                             <p class="m-0 fw-bold">${{ $product->price }}</p>
                             <p class="m-0 text-muted small">{{ $product->description }}</p>
                         </div>
                     </div>
-                    
                 </li>
             @endforeach
         </ul>
+
+        <div class="mt-3">
+            {{ $products->links() }}
+        </div>
     </div>
 </div>
 
