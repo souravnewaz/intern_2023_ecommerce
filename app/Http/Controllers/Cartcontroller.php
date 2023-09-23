@@ -49,8 +49,12 @@ class Cartcontroller extends Controller
         return redirect()->back()->with('success', 'Item removed from cart successfully');
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        $request->validate([
+            'address' => 'required|string|min:5|max:500'
+        ]);
+        
         $carts = Cart::with('product')->where('user_id', auth()->user()->id)->get();
 
         $subtotal = 0;
@@ -62,7 +66,8 @@ class Cartcontroller extends Controller
 
         $order = Order::create([
             'user_id' => auth()->user()->id,
-            'subtotal' => $subtotal
+            'subtotal' => $subtotal,
+            'address' => $request->address
         ]);
 
         foreach($carts as $cart) {

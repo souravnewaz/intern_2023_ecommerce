@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->decimal('subtotal');
             $table->enum('status', ['pending', 'processing', 'delivered'])->default('pending');
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

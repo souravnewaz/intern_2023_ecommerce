@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/carts', [Cartcontroller::class, 'index'])->name('carts.index');
     Route::get('/carts/store/{product}', [Cartcontroller::class, 'store'])->name('carts.store');
     Route::get('/carts/delete/{cart}', [Cartcontroller::class, 'delete'])->name('carts.delete');
-    Route::get('/checkout', [Cartcontroller::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [Cartcontroller::class, 'checkout'])->name('checkout');
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 });

@@ -8,6 +8,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Date</th>
+            <th scope="col">Adrress</th>
             <th scope="col">Items</th>
             <th scope="col">Subtotal</th>
             <th scope="col">Status</th>
@@ -18,6 +19,7 @@
             <tr>
                 <th scope="row">{{ $order->id }}</th>
                 <td>{{ $order->created_at->format('Y-m-d h:ia') }}</td>
+                <td>{{ $order->address ?? '---' }}</td>
                 <td>
                     <table class="table table-bordered">
                         <tr>

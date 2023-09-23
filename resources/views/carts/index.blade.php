@@ -52,13 +52,18 @@
                     </tbody>
                     <tfoot>
                         <tr class="text-center">
-                            <td></td>
-                            <td></td>
-                            <td>Total</td>
-                            <td><strong>${{ $subtotal }}</strong></td>
-                            <td>
-                                <a type="button" class="btn btn-primary" href="{{ route('checkout') }}">Checkout</a>
-                            </td>
+                            <form action="{{ route('checkout') }}" method="POST">
+                                @CSRF
+                                <td>
+                                    <input type="text" name="address" class="form-control" placeholder="Your address here" required>
+                                </td>
+                                <td></td>
+                                <td>Total</td>
+                                <td><strong>${{ $subtotal }}</strong></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Checkout</button>
+                                </td>
+                            </form>
                         </tr>
                     </tfoot>
                 </table>
