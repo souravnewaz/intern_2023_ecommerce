@@ -18,19 +18,27 @@
         </div>
         <ul class="list-group">
             @foreach ($products as $product)
-                <li class="list-group-item">
-                    <div class="d-flex">
-                        <div>
-                            <img src="{{ asset($product->image) }}" alt="img" height="64" width="64" class="rounded">
-                        </div>
-                        <div class="mx-2">
-                            <p class="m-0">{{ $product->name }} <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-dark btn-sm">edit</a></p>
-                            <span class="badge rounded-pill bg-secondary">{{ $product->category->name }}</span>
-                            <p class="m-0 fw-bold">${{ $product->price }}</p>
-                            <p class="m-0 text-muted small">{{ $product->description }}</p>
-                        </div>
+            <li class="list-group-item">
+                <div class="d-flex">
+                    <div>
+                        <img src="{{ asset($product->image) }}" alt="img" height="64" width="64" class="rounded">
                     </div>
-                </li>
+                    <div class="mx-2">
+                        <p class="m-0">{{ $product->name }} <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-dark btn-sm">edit</a></p>
+                        <span class="badge rounded-pill bg-secondary">{{ $product->category->name }}</span>
+
+                        @if($product->regular_price != null)
+                        <p>
+                            <span class="small text-muted"><s>${{ $product->regular_price }}</s></span>
+                            <span class="fw-bold mb-0 text-dark">${{ $product->price }}</span>
+                        </p>
+                        @else
+                        <p class="fw-bold mb-0 text-gray">${{ $product->price }}</p>
+                        @endif
+                        <p class="m-0 text-muted small">{{ $product->description }}</p>
+                    </div>
+                </div>
+            </li>
             @endforeach
         </ul>
 

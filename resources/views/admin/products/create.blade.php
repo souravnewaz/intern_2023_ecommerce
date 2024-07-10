@@ -15,7 +15,7 @@
                         <h4>Add Product</h4>
                     </div>
                     <div>
-                        <a href="{{ route('admin.products') }}" class="btn btn-primary btn-sm">All Products</a> 
+                        <a href="{{ route('admin.products') }}" class="btn btn-primary btn-sm">All Products</a>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         <select name="category_id" class="form-select">
                             <option selected disabled>select category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -35,10 +35,17 @@
                         <label class="form-label">Product Name</label>
                         <input type="text" class="form-control" name="name">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Price</label>
-                        <input type="text" class="form-control" name="price">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Regular Price</label>
+                            <input type="text" class="form-control" name="regular_price">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Sale Price</label>
+                            <input type="text" class="form-control" name="price">
+                        </div>
                     </div>
+                    
                     <div class="mb-3">
                         <label class="form-label">Description</label>
                         <textarea name="description" rows="5" class="form-control"></textarea>

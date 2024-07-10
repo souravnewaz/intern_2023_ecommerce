@@ -41,8 +41,15 @@
                     <span class="badge bg-primary ms-2">4.7</span>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-3">
+                    @if($product->regular_price != null)
+                    <span>
+                        <span class="small text-muted"><s>${{ $product->regular_price }}</s></span>
+                        <span class="h5 mb-0 text-dark">${{ $product->price }}</span>
+                    </span>
+                    @else
                     <span class="h5 mb-0 text-gray">${{ $product->price }}</span>
-                    <a class="btn btn-xs btn-light" href="{{ route('carts.store', $product->id) }}">
+                    @endif
+                    <a class="btn btn-xs btn-light border" href="{{ route('carts.store', $product->id) }}">
                         <span class="fas fa-cart-plus me-2"></span> Add to cart
                     </a>
                 </div>
