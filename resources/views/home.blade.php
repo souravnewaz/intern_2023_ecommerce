@@ -1,14 +1,18 @@
 @extends('layouts.app')
-
 @section('content')
-<h2>Featured Categories</h2>
-<div class="d-flex flex-wrap justify-content-start align-items-center my-2">
-    @foreach ($categories as $category)
-    <a href="/?category={{$category->id}}" class="btn {{ request()->category == $category->id ? 'btn-dark' : 'btn-outline-dark' }} m-1 btn-sm">{{ $category->name }}</a>
-    @endforeach
+
+<h3>Featured Categories</h3>
+<div style="overflow-y: scroll;" class="mb-3">
+    <div class="d-flex my-2">
+        @foreach ($categories as $category)
+        <div>
+            <a href="/?category={{$category->id}}" class="btn {{ request()->category == $category->id ? 'btn-dark' : 'btn-outline-dark' }} m-1 btn-sm text-nowrap">{{ $category->name }}</a>
+        </div>
+        @endforeach
+    </div>
 </div>
 
-<h2>Products</h2>
+<h3>Products</h3>
 <form action="/">
     <div class="input-group mb-3">
         <input type="text" class="form-control" name="product" placeholder="Search Product" value="{{ request()->product }}">
@@ -17,7 +21,7 @@
 </form>
 
 @if(request()->product && !count($products))
-    <div class="alert alert-warning" role="alert">No results found for: <strong>{{ request()->product }}</strong></div>
+<div class="alert alert-warning" role="alert">No results found for: <strong>{{ request()->product }}</strong></div>
 @endif
 <div class="row">
     @foreach ($products as $product)
