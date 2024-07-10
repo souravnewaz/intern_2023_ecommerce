@@ -40,4 +40,33 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+    public function adminForm()
+    {
+        return view('auth.admin-login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|exists:users,email',
+            'password' => 'required|min:8',
+        ]);
+
+        $user = User::where('email', $credentials['email'])->first();
+
+        if($user->role != 'admin') {
+            return redirect()->back()->with('error', 'You are not Admin!');
+        }
+
+        if(!Auth::validate($credentials)) {
+            return redirect()->back()->with('error', 'Invalid credentials!');
+        }
+
+        Auth::login($user);
+
+        session()->flash('success', 'Login successful');
+
+        return redirect()->route('admin.dashboard');
+    }
 }

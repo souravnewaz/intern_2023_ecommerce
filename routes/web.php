@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 });
 
+
+Route::get('/admin/login', [LoginController::class, 'adminForm'])->name('admin.login');
+Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
+
 Route::prefix('admin')->middleware('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('admin.orders');
