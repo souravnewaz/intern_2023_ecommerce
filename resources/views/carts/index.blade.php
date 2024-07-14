@@ -58,8 +58,8 @@
                                     <input type="text" name="address" class="form-control" placeholder="Your address here" required>
                                 </td>
                                 <td></td>
-                                <td>Total</td>
-                                <td><strong>${{ $subtotal }}</strong></td>
+                                <td style="border-right: 0;">Total</td>
+                                <td style="border-left: 0;"><strong>${{ $subtotal }}</strong></td>
                                 <td>
                                     <button type="submit" class="btn btn-primary">Checkout</button>
                                 </td>
