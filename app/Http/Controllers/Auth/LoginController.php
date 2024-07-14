@@ -28,6 +28,10 @@ class LoginController extends Controller
 
         $user = User::where('email', $credentials['email'])->first();
 
+        if($user->role == 'admin') {
+            return redirect()->back()->with('error', 'Please login as admin');
+        }
+
         Auth::login($user);
 
         return redirect('/');
